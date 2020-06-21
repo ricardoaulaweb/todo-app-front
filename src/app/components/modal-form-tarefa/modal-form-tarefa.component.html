@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>{{ tarefa.id ? "Editar" : "Nova" }} tarefa</h1>
+<form #form="ngForm">
+  <div mat-dialog-content fxLayout="column" style="min-width: 300px;">
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        required
+        name="descricao"
+        [(ngModel)]="tarefa.descricao"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Prazo</mat-label>
+      <input
+        matInput
+        required
+        name="prazo"
+        [min]="agora"
+        [matDatepicker]="picker"
+        [(ngModel)]="tarefa.prazo"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <app-select
+      required
+      name="categoria"
+      placeholder="Categoria"
+      displayValue="descricao"
+      [service]="categoriaService"
+      [(ngModel)]="tarefa.categoria"
+    >
+    </app-select>
+    <app-select
+      required
+      name="responsavel"
+      placeholder="Responsável"
+      displayValue="nome"
+      [service]="responsavelService"
+      [(ngModel)]="tarefa.responsavel"
+    >
+    </app-select>
+  </div>
+</form>
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    [disabled]="!form.valid"
+    (click)="salvar()"
+  >
+    SALVAR
+  </button>
+</div>

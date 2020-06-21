@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.screen {
+  width: 100%;
+  height: calc(100% - 64px);
+  padding: 0 200px;
+  background-color: #f2f2f2;
+  box-sizing: border-box;
+  display: flex;
+}

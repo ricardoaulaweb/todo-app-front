@@ -1,0 +1,18 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon
+    [ngStyle]="{ color: filtrando ? 'rgba(0,0,0,.7)' : 'rgba(0,0,0,.2)' }"
+  >
+    filter_list_alt
+  </mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button
+    mat-menu-item
+    *ngFor="let categoria of categorias"
+    [disabled]="categoria === filtroAtual"
+    (click)="filtrar(categoria)"
+  >
+    {{ categoria.descricao }}
+  </button>
+</mat-menu>

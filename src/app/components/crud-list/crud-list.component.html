@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>{{ titulo }}</h1>
+<form #form="ngForm">
+  <div mat-dialog-content fxLayout style="min-width: 300px;">
+    <mat-form-field fxFlex>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        required
+        [name]="displayValue"
+        [(ngModel)]="value[displayValue]"
+      />
+    </mat-form-field>
+    <button
+      mat-mini-fab
+      style="margin: 0 15px;"
+      color="primary"
+      (click)="cadastrar()"
+    >
+      <mat-icon>{{ value.id ? "save" : "add" }}</mat-icon>
+    </button>
+  </div>
+</form>
+
+<mat-list role="list" style="max-height: 400px; overflow: auto;">
+  <mat-list-item *ngFor="let value of values" role="listitem">
+    <div fxFlex>
+      {{ value[displayValue] }}
+    </div>
+    <button mat-icon-button (click)="editar(value)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="deletar(value)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

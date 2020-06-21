@@ -1,0 +1,14 @@
+<mat-form-field style="width: 100%;">
+  <mat-label>{{ placeholder }}</mat-label>
+  <mat-select
+    required
+    [name]="displayValue"
+    [compareWith]="compareSelectValues"
+    [ngModel]="selected"
+    (ngModelChange)="onChange($event)"
+  >
+    <mat-option *ngFor="let value of values" [value]="value">
+      {{ value[displayValue] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
